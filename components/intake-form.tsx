@@ -8,7 +8,7 @@ import { submitIntakeForm } from "@/app/actions/submit-intake"
 type PackageType = 'starter' | 'standard' | 'premium'
 type TemplateType = 'Classic' | 'Modern' | 'Executive'
 
-interface FormData {
+interface IntakeFormData {
   firstName: string
   lastName: string
   email: string
@@ -50,7 +50,7 @@ export function IntakeForm() {
   const [uploadedFileName, setUploadedFileName] = useState("")
   const [uploadError, setUploadError] = useState("")
 
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<IntakeFormData>({
     firstName: "",
     lastName: "",
     email: "",
@@ -74,7 +74,7 @@ export function IntakeForm() {
     }
   }, [lockedPackage])
 
-  const updateField = (field: keyof FormData, value: string) => {
+  const updateField = (field: keyof IntakeFormData, value: string) => {
     setValidationError("")
     setFormData(prev => ({ ...prev, [field]: value }))
   }

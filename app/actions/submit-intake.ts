@@ -44,6 +44,7 @@ export async function submitIntakeForm(formData: {
     certifications: formData.certifications,
     notes: formData.notes,
     template: formData.template,
+    resumeUrl: formData.resumeUrl,
     submittedAt: new Date().toISOString()
   }
 
@@ -114,7 +115,8 @@ export async function submitIntakeForm(formData: {
           work_history: formData.workHistory,
           certifications: formData.certifications,
           notes: formData.notes,
-          template: formData.template
+          template: formData.template,
+          resume_url: formData.resumeUrl || null
         },
         { onConflict: 'order_ref' }
       )
