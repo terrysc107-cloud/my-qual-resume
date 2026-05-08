@@ -1,25 +1,21 @@
+import { Navbar } from "@/components/navbar"
+import { HeroSection } from "@/components/hero-section"
+import { Ticker } from "@/components/ticker"
+import { HowItWorksSection } from "@/components/how-it-works-section"
+import { PricingSectionNew } from "@/components/pricing-section-new"
+import { TestimonialsSection } from "@/components/testimonials-section"
+import { FooterNew } from "@/components/footer-new"
+
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-8">
-      <div className="max-w-2xl w-full text-center">
-        <h1 className="text-4xl font-bold mb-4" style={{ color: "var(--foreground)" }}>
-          My Qual Resume
-        </h1>
-        <p className="text-lg mb-8" style={{ color: "var(--muted-foreground)" }}>
-          Welcome to your professional resume showcase
-        </p>
-        <div
-          className="p-6 rounded-lg"
-          style={{
-            backgroundColor: "var(--muted)",
-            border: "1px solid var(--border)",
-          }}
-        >
-          <p style={{ color: "var(--foreground)" }}>
-            This is your starting point. Add your qualifications, experience, and skills here.
-          </p>
-        </div>
-      </div>
+    <main>
+      <Navbar />
+      <HeroSection />
+      <Ticker />
+      <HowItWorksSection />
+      <PricingSectionNew />
+      <TestimonialsSection />
+      <FooterNew />
     </main>
-  );
+  )
 }
