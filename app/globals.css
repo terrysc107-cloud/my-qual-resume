@@ -1,30 +1,157 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #fafafa;
-  --foreground: #171717;
-  --primary: #2563eb;
-  --primary-foreground: #ffffff;
-  --muted: #f5f5f5;
-  --muted-foreground: #737373;
-  --border: #e5e5e5;
-  --radius: 0.5rem;
+  /* Qualified Resume Co. Theme - Dark Ink/Gold */
+  --ink: #080808;
+  --ink2: #141414;
+  --ink3: #2a2a2a;
+  --ink4: #4a4a4a;
+  --fog: #f6f4f0;
+  --fog2: #eeebe4;
+  --fog3: #e2ddd5;
+  --gold: #c49a2a;
+  --gold2: #e0b340;
+  --gold3: #f5d070;
+  --gold-dim: #7a5f1a;
+  --white: #ffffff;
+  --red: #c0392b;
+  
+  --background: var(--fog);
+  --foreground: var(--ink);
+  --card: var(--white);
+  --card-foreground: var(--ink);
+  --popover: var(--white);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--white);
+  --secondary: var(--fog2);
+  --secondary-foreground: var(--ink);
+  --muted: var(--fog2);
+  --muted-foreground: var(--ink4);
+  --accent: var(--gold);
+  --accent-foreground: var(--ink);
+  --destructive: var(--red);
+  --destructive-foreground: var(--white);
+  --border: var(--fog3);
+  --input: var(--fog);
+  --ring: var(--gold);
+  --radius: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --primary: #3b82f6;
-    --primary-foreground: #ffffff;
-    --muted: #262626;
-    --muted-foreground: #a3a3a3;
-    --border: #262626;
+@theme inline {
+  --font-sans: var(--font-mono-var), 'DM Mono', monospace;
+  --font-serif: var(--font-serif-var), 'Cormorant Garamond', Georgia, serif;
+  --font-mono: var(--font-mono-var), 'DM Mono', monospace;
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  
+  /* Custom theme colors */
+  --color-ink: var(--ink);
+  --color-ink2: var(--ink2);
+  --color-ink3: var(--ink3);
+  --color-ink4: var(--ink4);
+  --color-fog: var(--fog);
+  --color-fog2: var(--fog2);
+  --color-fog3: var(--fog3);
+  --color-gold: var(--gold);
+  --color-gold2: var(--gold2);
+  --color-gold3: var(--gold3);
+  --color-gold-dim: var(--gold-dim);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: system-ui, sans-serif;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes scroll-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.7s ease both;
+}
+
+.animate-fade-up-delay-1 {
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.animate-fade-up-delay-3 {
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.animate-fade-up-delay-4 {
+  animation: fadeUp 0.7s 0.4s ease both;
+}
+
+.animate-fade-up-delay-5 {
+  animation: fadeUp 0.7s 0.5s ease both;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s infinite;
+}
+
+.animate-scroll-ticker {
+  animation: scroll-ticker 28s linear infinite;
 }
